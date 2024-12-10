@@ -14,7 +14,7 @@ def image_data(X, i):
     Returns:
         np.ndarray: reshaped matrix for plotting
     """
-    return X[i].reshape(28, 28)
+    return 255 - X[i].reshape(28, 28)
 
 def indicator(d, v):
     """
