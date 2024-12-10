@@ -96,7 +96,7 @@ def svm(alpha, epsilon, mu, X, y):
         wbar_current = wbar_current - alpha * r
         visited_iterates.append(wbar_current.copy())
         k += 1
-    return np.array(visited_iterates)
+    return np.array(visited_iterates).T
 
 def svm_accuracy(wbar, X, y):
     """
@@ -163,9 +163,9 @@ def accuracies(X, y):
     alpha = 1e-5
     epsilon = 1e-2
     mu = 1e-1
-    iterates = svm(alpha, epsilon, mu, X, y)
+    iterates = svm(alpha, epsilon, mu, X_train, y_train)
     
-    final_wbar = iterates[-1]
+    final_wbar = iterates[:, -1]
     
     in_sample_accuracy = svm_accuracy(final_wbar, X_train, y_train)
     out_of_sample_accuracy = svm_accuracy(final_wbar, X_test, y_test)
